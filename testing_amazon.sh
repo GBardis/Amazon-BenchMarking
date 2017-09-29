@@ -1,3 +1,5 @@
+GNU nano 2.5.3                                                        File: amazon_bench.sh                                                                                                            Modified
+
 #!/usr/bin/expect
 spawn apt update -y
 interact
@@ -36,6 +38,7 @@ send "y\r"
 expect "Run all test options (Y/n):"
 send "y\r"
 
+
 set count 10;
 
 while {$count > 0 } {
@@ -50,3 +53,79 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
+
+set count 10;
+while {$count > 0 } {
+  spawn phoronix-test-suite batch-benchmark pts/compress-gzip
+
+  expect "Enter a name to save these results under:"
+  send "Gzip $count\r"
+  expect "Enter a unique name to describe this test run / configuration:"
+  send "$count Time\r"
+  expect "New Description:"
+  send "$count Time\r"
+  interact
+  set count [expr $count-1];
+}
+
+set count 10;
+while {$count > 0 } {
+  spawn phoronix-test-suite batch-benchmark pts/stream
+
+  expect "Enter a name to save these results under:"
+  send "Stream $count\r"
+  expect "Enter a unique name to describe this test run / configuration:"
+  send "$count Time\r"
+  expect "New Description:"
+  send "$count Time\r"
+  interact
+  set count [expr $count-1];
+}
+
+set count 10;
+
+while {$count > 0 } {
+  spawn phoronix-test-suite batch-benchmark pts/phpbench
+
+  expect "Enter a name to save these results under:"
+  send "PhpBench $count\r"
+  expect "Enter a unique name to describe this test run / configuration:"
+  send "$count Time\r"
+  expect "New Description:"
+  send "$count Time\r"
+  interact
+  set count [expr $count-1];
+}
+
+set count 10;
+
+while {$count > 0 } {
+  spawn phoronix-test-suite batch-benchmark pts/apache
+
+  expect "Enter a name to save these results under:"
+  send "Apache $count\r"
+  expect "Enter a unique name to describe this test run / configuration:"
+  send "$count Time\r"
+  expect "New Description:"
+  send "$count Time\r"
+  interact
+  set count [expr $count-1];
+}
+
+spawn phoronix-test-suite batch-benchmark pts/iozone
+expect "Enter a name to save these results under:"
+send "Iozone $count\r"
+expect "Enter a unique name to describe this test run / configuration:"
+send "$count Time\r"
+expect "New Description:"
+send "$count Time\r"
+interact
+
+spawn phoronix-test-suite batch-benchmark pts/tiobench
+expect "Enter a name to save these results under:"
+send "TioBench $count\r"
+expect "Enter a unique name to describe this test run / configuration:"
+send "$count Time\r"
+expect "New Description:"
+send "$count Time\r"
+interact
