@@ -19,7 +19,7 @@ spawn phoronix-test-suite install pts/phpbench
 interact
 spawn phoronix-test-suite install pts/apache
 interact
-spawn  phoronix-test-suite install pts/stream
+spawn  phoronix-test-suite install pts/stream-1.2.0
 interact
 
 spawn phoronix-test-suite batch-setup
@@ -53,7 +53,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-
+spawn phoronix-test-suite merge-results 7zip-1 7zip-2 7zip-2 7zip-3 7zip-4 7zip-5 7zip-6 7zip-7 7zip-8 7zip-9 7zip-10
 set count 10;
 while {$count > 0 } {
   spawn phoronix-test-suite batch-benchmark pts/compress-gzip
@@ -67,10 +67,10 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-
+spawn phoronix-test-suite merge-results  Gzip-1 Gzip-2 Gzip-3 Gzip-4 Gzip-5 Gzip-6 Gzip-7 Gzip-8 Gzip-9 Gzip-10
 set count 10;
 while {$count > 0 } {
-  spawn phoronix-test-suite batch-benchmark pts/stream
+  spawn phoronix-test-suite batch-benchmark pts/stream-1.2.0
 
   expect "Enter a name to save these results under:"
   send "Stream $count\r"
@@ -81,6 +81,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
+spawn phoronix-test-suite merge-results Stream-1 Stream-2 Stream-3 Stream-4 Stream-5 Stream-6 Stream-7 Stream-8 Stream-9 Stream-10
 
 set count 10;
 
@@ -96,7 +97,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-
+spawn phoronix-test-suite merge-results PhpBench-1 PhpBench-2 PhpBench-3 PhpBench-4 PhpBench-5 PhpBench-6 PhpBench-7 PhpBench-8 PhpBench-9 PhpBench-10
 set count 10;
 
 while {$count > 0 } {
@@ -111,6 +112,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
+spawn phoronix-test-suite merge-results Apache-1 Apache-2 Apache-3 Apache-4 Apache-5 Apache-6 Apache-7 Apache-8 Apache-9 Apache-10
 
 spawn phoronix-test-suite batch-benchmark pts/iozone
 expect "Enter a name to save these results under:"
