@@ -53,7 +53,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-spawn phoronix-test-suite merge-results 7zip-1 7zip-2 7zip-2 7zip-3 7zip-4 7zip-5 7zip-6 7zip-7 7zip-8 7zip-9 7zip-10
+spawn phoronix-test-suite merge-results 7zip-1 7zip-2 7zip-3 7zip-4 7zip-5 7zip-6 7zip-7 7zip-8 7zip-9 7zip-10
 set count 10;
 while {$count > 0 } {
   spawn phoronix-test-suite batch-benchmark pts/compress-gzip
