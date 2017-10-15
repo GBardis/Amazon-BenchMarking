@@ -67,7 +67,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-spawn phoronix-test-suite merge-results  Gzip-1 Gzip-2 Gzip-3 Gzip-4 Gzip-5 Gzip-6 Gzip-7 Gzip-8 Gzip-9 Gzip-10
+spawn phoronix-test-suite merge-results  gzip-1 gzip-2 gzip-3 gzip-4 gzip-5 gzip-6 gzip-7 gzip-8 gzip-9 gzip-10
 set count 10;
 while {$count > 0 } {
   spawn phoronix-test-suite batch-benchmark pts/stream-1.2.0
@@ -81,7 +81,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-spawn phoronix-test-suite merge-results Stream-1 Stream-2 Stream-3 Stream-4 Stream-5 Stream-6 Stream-7 Stream-8 Stream-9 Stream-10
+spawn phoronix-test-suite merge-results stream-1 stream-2 stream-3 stream-4 stream-5 stream-6 stream-7 stream-8 stream-9 stream-10
 
 set count 10;
 
@@ -97,7 +97,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-spawn phoronix-test-suite merge-results PhpBench-1 PhpBench-2 PhpBench-3 PhpBench-4 PhpBench-5 PhpBench-6 PhpBench-7 PhpBench-8 PhpBench-9 PhpBench-10
+spawn phoronix-test-suite merge-results phpbench-1 phpbench-2 phpbench-3 phpbench-4 phpbench-5 phpbench-6 phpbench-7 phpbench-8 phpbench-9 phpbench-10
 set count 10;
 
 while {$count > 0 } {
@@ -112,7 +112,7 @@ while {$count > 0 } {
   interact
   set count [expr $count-1];
 }
-spawn phoronix-test-suite merge-results Apache-1 Apache-2 Apache-3 Apache-4 Apache-5 Apache-6 Apache-7 Apache-8 Apache-9 Apache-10
+spawn phoronix-test-suite merge-results apache-1 apache-2 apache-3 apache-4 apache-5 apache-6 apache-7 apache-8 apache-9 apache-10
 
 spawn phoronix-test-suite batch-benchmark pts/iozone
 expect "Enter a name to save these results under:"
@@ -130,4 +130,41 @@ expect "Enter a unique name to describe this test run / configuration:"
 send "$count Time\r"
 expect "New Description:"
 send "$count Time\r"
+interact
+
+
+
+####Create Csv Files
+set count 10;
+while {$count > 0 } {
+  spawn phoronix-test-suite result-file-to-csv 7zip-$count
+  interact
+  set count [expr $count-1];
+}
+
+set count 10;
+while {$count > 0 } {
+  spawn phoronix-test-suite result-file-to-csv gzip-$count
+  interact
+  set count [expr $count-1];
+}
+
+set count 10;
+while {$count > 0 } {
+  spawn phoronix-test-suite result-file-to-csv stream-$count
+  interact
+  set count [expr $count-1];
+}
+
+set count 10;
+while {$count > 0 } {
+  spawn phoronix-test-suite result-file-to-csv phpbench-$count
+  interact
+  set count [expr $count-1];
+}
+
+spawn phoronix-test-suite result-file-to-csv iozone-0
+interact
+
+spawn phoronix-test-suite result-file-to-csv tiobench-benchmark
 interact
